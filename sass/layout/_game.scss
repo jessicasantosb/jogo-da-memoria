@@ -1,0 +1,15 @@
+@use "../base/mixin" as *;
+@use "../base//variables" as *;
+
+.game{
+    @include center();
+    background-color: $bg;
+    &__grid {
+        width: 100%;
+        max-width: 800px;
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+}
