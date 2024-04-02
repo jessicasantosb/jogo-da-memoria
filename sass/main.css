@@ -14,9 +14,10 @@
   display: block;
   height: 100dvh;
   width: 100%;
-  background: linear-gradient(45deg, #3681e3, #3810b0);
+  background: url("../../assets/login-bg.jpg") no-repeat center center;
+  background-size: cover;
   z-index: -1;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .login-container {
@@ -64,7 +65,7 @@
   display: block;
   height: 100dvh;
   width: 100%;
-  background: url("../../assets/bg.jpg") no-repeat center center;
+  background: url("../../assets/game-bg.jpg") no-repeat center center;
   background-size: cover;
   z-index: -1;
   opacity: 0.7;
@@ -160,7 +161,7 @@
   border-radius: 5px;
   transition: all 2s ease;
   transform-style: preserve-3d;
-  background-color: hsla(0, 0%, 80%, 0.8);
+  background-color: rgba(204, 204, 204, 0.8);
 }
 .game__card__face {
   position: absolute;

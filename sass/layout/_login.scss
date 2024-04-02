@@ -1,10 +1,13 @@
 @use '../base/variables' as *;
 @use "../base/mixin" as *;
 
+.login__background::before {
+    @include background(url("../../assets/login-bg.jpg") no-repeat center center);
+}
+
 .login-container {
     @include center();
     @include container();
-    background-color: $bg;
 }
 
 .login {

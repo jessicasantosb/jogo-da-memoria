@@ -14,3 +14,15 @@
         max-width: 500px;
     }
 }
+
+@mixin background($background, $opacity: 1) {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 100dvh;
+    width: 100%;
+    background: $background;
+    background-size: cover;
+    z-index: -1;
+    opacity: $opacity;
+}
