@@ -48,6 +48,9 @@
   text-transform: uppercase;
   padding-bottom: 2rem;
 }
+.login__amount {
+  padding-bottom: 2.5rem;
+}
 
 .game__background::before {
   content: "";
@@ -121,6 +124,17 @@
 .login__button:disabled {
   background-color: #dddbdb;
   color: #9e9d9d;
+}
+.login__amount-num {
+  padding: 10px;
+  width: 50px;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FDA403;
+  cursor: pointer;
+}
+.login__amount-num:hover, .login__amount-num:active {
+  background-color: #046484;
 }
 
 .game__back, .game__restart {

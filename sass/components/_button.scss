@@ -14,6 +14,19 @@
             color: #9e9d9d;
         }
     }
+    &__amount {
+        &-num {
+            padding: 10px;
+            width: 50px;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: $secondary;
+            cursor: pointer;
+            &:hover, &:active {
+                background-color: $primary;
+            }
+        }
+    }
 }
 
 .game {

@@ -88,7 +88,11 @@ const createCard = (img) => {
 };
 
 const loadGame = () => {
-  const duplicateImages = [...images, ...images];
+  const cardsNum = localStorage.getItem("cardsNum");
+
+  const newImages = images.slice(0, cardsNum);
+
+  const duplicateImages = [...newImages, ...newImages];
 
   const shuffledImages = duplicateImages.sort(() => Math.random() - 0.5);
 
