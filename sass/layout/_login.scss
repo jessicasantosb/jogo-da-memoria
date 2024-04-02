@@ -12,17 +12,10 @@
 
 .login {
     @include center();
-    &__header {
-        @include center();
-        margin-bottom: 50px;
-        &__image {
-            width: 100px;
-            padding-bottom: 20px;
-        }
-        &__title {
-            color: $primary;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-        }
+    &__title {
+        color: $primary;
+        font-size: 2rem;
+        text-transform: uppercase;
+        padding-bottom: 2rem;
     }
 }

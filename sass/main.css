@@ -42,21 +42,11 @@
   justify-content: center;
   align-items: center;
 }
-.login__header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
-.login__header__image {
-  width: 100px;
-  padding-bottom: 20px;
-}
-.login__header__title {
+.login__title {
   color: #046484;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
+  padding-bottom: 2rem;
 }
 
 .game__background::before {
