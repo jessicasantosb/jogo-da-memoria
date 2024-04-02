@@ -1,15 +1,31 @@
 @use "../base/variables" as *;
 
-.login__button {
-    width: 100%;
-    padding: 15px;
-    background-color: $accent;
-    color: $bg;
-    font-size: 1em;
-    border-radius: 10px;
-    cursor: pointer;
-    &:disabled {
-        background-color: #dddbdb;
-        color: #9e9d9d;
+.login {
+    &__button {
+        width: 100%;
+        padding: 15px;
+        background-color: $accent;
+        color: $bg;
+        font-size: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+        &:disabled {
+            background-color: #dddbdb;
+            color: #9e9d9d;
+        }
+    }
+}
+
+.game {
+    &__back, &__restart {
+        height: 50px;
+        width: 50px;
+        background-color: $secondary;
+        border-radius: 50%;
+        cursor: pointer;
+        & i {
+            font-size: 2rem;
+            color: $text;
+        }
     }
 }

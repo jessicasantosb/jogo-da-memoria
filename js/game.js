@@ -1,6 +1,8 @@
 const grid = document.querySelector(".game__grid");
 const playerDisplay = document.querySelector(".game__player");
 const timerDisplay = document.querySelector(".game__timer");
+const back = document.querySelector(".game__back");
+const restart = document.querySelector(".game__restart");
 
 const images = [
   "astronaut",
@@ -103,6 +105,20 @@ const startTimer = () => {
     timerDisplay.innerHTML = currentTime + 1;
   }, 1000);
 };
+
+back.addEventListener("click", () => {
+  const answer = window.confirm("Deseja abandonar a partida?");
+  if (answer) window.location = "../index.html";
+});
+
+restart.addEventListener("click", () => {
+  const answer = window.confirm("Deseja reiniciar a partida?");
+  if (answer)
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 200);
+  console.log(firstCard);
+});
 
 window.onload = () => {
   playerDisplay.innerHTML = localStorage.getItem("player");
