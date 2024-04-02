@@ -1,4 +1,6 @@
 const grid = document.querySelector(".game__grid");
+const playerDisplay = document.querySelector(".game__player");
+const timerDisplay = document.querySelector(".game__timer");
 
 const images = [
   "astronaut",
@@ -8,11 +10,9 @@ const images = [
   "mars",
   "moon",
   "moon2",
-  "rocket",
   "saturn",
   "space",
   "uranus",
-  "venus",
 ];
 
 const createElement = (tag, className) => {
@@ -25,12 +25,15 @@ let firstCard = "";
 let secondCard = "";
 
 const checkEndGame = () => {
-    const disabledCards = document.querySelectorAll(".disabled-card")
+  const disabledCards = document.querySelectorAll(".disabled-card");
 
-    if (disabledCards.length === 20) {
-        alert("Parabens, voce conseguiu")
-    }
-}
+  if (disabledCards.length === 20) {
+    clearInterval(this.loop);
+    alert(
+      `Parabéns, ${playerDisplay.innerHTML}! Seu tempo foi: ${timerDisplay.innerHTML}`
+    );
+  }
+};
 
 const checkCards = () => {
   const firstChoice = firstCard.getAttribute("data-image");
@@ -42,7 +45,7 @@ const checkCards = () => {
     firstCard = "";
     secondCard = "";
 
-    checkEndGame()
+    checkEndGame();
   } else {
     setTimeout(() => {
       firstCard.classList.remove("reveal-card");
@@ -93,4 +96,16 @@ const loadGame = () => {
   });
 };
 
-loadGame();
+const startTimer = () => {
+  this.loop = setInterval(() => {
+    const currentTime = +timerDisplay.innerHTML;
+
+    timerDisplay.innerHTML = currentTime + 1;
+  }, 1000);
+};
+
+window.onload = () => {
+  playerDisplay.innerHTML = localStorage.getItem("player");
+  startTimer();
+  loadGame();
+};

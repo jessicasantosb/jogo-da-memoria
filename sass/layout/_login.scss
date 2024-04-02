@@ -3,12 +3,11 @@
 
 .login-container {
     @include center();
+    @include container();
     background-color: $bg;
 }
 
 .login {
-    height: 100dvh;
-    max-width: 800px;
     @include center();
     &__header {
         @include center();

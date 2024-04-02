@@ -13,12 +13,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #F4FDF9;
+  height: 100dvh;
+  max-width: 700px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  background-color: rgba(204, 204, 204, 0.8);
+}
+@media screen and (max-width: 800px) {
+  .login-container {
+    max-width: 500px;
+  }
 }
 
 .login {
-  height: 100dvh;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,27 +48,66 @@
   text-transform: uppercase;
 }
 
+.game__background::before {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 100dvh;
+  width: 100%;
+  background: url("../../assets/bg.jpg") no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.7;
+}
+
 .game {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #F4FDF9;
+  height: 100dvh;
+  max-width: 700px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+@media screen and (max-width: 800px) {
+  .game {
+    max-width: 500px;
+  }
+}
+.game__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(204, 204, 204, 0.8);
+}
+@media screen and (max-width: 800px) {
+  .game__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
 }
 .game__grid {
   width: 100%;
-  max-width: 800px;
   margin-inline: auto;
+  margin-block: 3rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 15px;
 }
 
 .login__button {
   width: 100%;
   padding: 15px;
   background-color: #5074e7;
-  color: #F4FDF9;
+  color: rgba(204, 204, 204, 0.8);
   font-size: 1em;
   border-radius: 10px;
   cursor: pointer;
@@ -87,6 +133,7 @@
   border-radius: 5px;
   transition: all 2s ease;
   transform-style: preserve-3d;
+  background-color: rgba(204, 204, 204, 0.8);
 }
 .game__card__face {
   position: absolute;
