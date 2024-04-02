@@ -22,7 +22,11 @@
         margin-top: 2rem;
         padding: 20px;
         border-radius: 10px;
-        background-color: $bg;
+        background-color: $primary;
+        & span {
+            color: $secondary;
+            font-size: 1.15rem;
+        }
         @media screen and (max-width: 800px) {
             @include center();
             gap: 20px;           
