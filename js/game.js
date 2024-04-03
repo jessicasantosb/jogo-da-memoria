@@ -60,14 +60,17 @@ const checkCards = () => {
 };
 
 const revealCard = ({ target }) => {
-  if (target.parentNode.className.includes("reveal-card")) return;
+  const card = target.dataset.image;
+  if (!card) return;
+
+  if (target.className.includes("reveal-card")) return;
 
   if (firstCard === "") {
-    target.parentNode.classList.add("reveal-card");
-    firstCard = target.parentNode;
+    target.classList.add("reveal-card");
+    firstCard = target;
   } else if (secondCard === "") {
-    target.parentNode.classList.add("reveal-card");
-    secondCard = target.parentNode;
+    target.classList.add("reveal-card");
+    secondCard = target;
     checkCards();
   }
 };
@@ -76,13 +79,42 @@ const createCard = (img) => {
   const card = createElement("div", "game__card");
   const front = createElement("div", "game__card__face front");
   const back = createElement("div", "game__card__face back");
+  const container = createElement("div", "container");
+  const stars = createElement("div", "stars");
+  const planet = createElement("div", "planet");
+  const astronaut = createElement("div", "astronaut");
+  const shadow = createElement("div", "shadow");
+  const tank = createElement("div", "tank center");
+  const suit = createElement("div", "suit center");
+  const helmet = createElement("div", "helmet center");
+  const buttons = createElement("div", "buttons center");
+  const handL = createElement("div", "hand-l");
+  const handR = createElement("div", "hand-r");
+  const legL = createElement("div", "leg-l");
+  const legR = createElement("div", "leg-r");
+  const pipe = createElement("div", "pipe");
 
   front.style.backgroundImage = `url("../assets/${img}.jpg")`;
+
+  // elements to back face animation
+  planet.appendChild(shadow);
+  astronaut.appendChild(tank);
+  astronaut.appendChild(suit);
+  suit.appendChild(helmet);
+  suit.appendChild(buttons);
+  suit.appendChild(handL);
+  suit.appendChild(handR);
+  suit.appendChild(legL);
+  suit.appendChild(legR);
+  suit.appendChild(pipe);
+  container.appendChild(stars);
+  container.appendChild(planet);
+  container.appendChild(astronaut);
+  back.appendChild(container);
 
   card.appendChild(front);
   card.appendChild(back);
 
-  card.addEventListener("click", revealCard);
   card.setAttribute("data-image", img);
 
   return card;
@@ -90,8 +122,6 @@ const createCard = (img) => {
 
 const loadGame = () => {
   const cardsNum = localStorage.getItem("cardsNum");
-
-  console.log(cardsNum);
 
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
@@ -117,6 +147,8 @@ const startTimer = () => {
   }, 1000);
 };
 
+grid.addEventListener("click", revealCard);
+
 back.addEventListener("click", () => {
   const answer = window.confirm("Deseja abandonar a partida?");
   if (answer) window.location = "../index.html";
@@ -128,7 +160,6 @@ restart.addEventListener("click", () => {
     setTimeout(() => {
       window.location.reload(true);
     }, 200);
-  console.log(firstCard);
 });
 
 window.onload = () => {
