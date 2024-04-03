@@ -123,6 +123,14 @@ const createCard = (img) => {
 const loadGame = () => {
   const cardsNum = localStorage.getItem("cardsNum");
 
+  if (cardsNum === "2" || cardsNum === "4") {
+    grid.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
+  }
+
+  if (cardsNum === "6") grid.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
+
+  if (cardsNum === "10") grid.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
+ 
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
   const imagesSliced = imagesShuffled.slice(0, cardsNum);
