@@ -18,10 +18,13 @@
         & span {
             color: $secondary;
             font-size: 1.15rem;
+            @media screen and (max-width: 800px) {
+                font-size: 1rem;           
+            }
         }
         @media screen and (max-width: 800px) {
-            @include center();
-            gap: 20px;           
+            gap: 10px;
+            padding: 10px;
         }
     }
     &__grid {
