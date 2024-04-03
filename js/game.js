@@ -90,13 +90,17 @@ const createCard = (img) => {
 const loadGame = () => {
   const cardsNum = localStorage.getItem("cardsNum");
 
-  const newImages = images.slice(0, cardsNum);
+  const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
-  const duplicateImages = [...newImages, ...newImages];
+  const imagesSliced = imagesShuffled.slice(0, cardsNum);
 
-  const shuffledImages = duplicateImages.sort(() => Math.random() - 0.5);
+  const imagesDuplicated = [...imagesSliced, ...imagesSliced];
 
-  shuffledImages.forEach((img) => {
+  const ImagesDuplicatedShuffled = imagesDuplicated.sort(
+    () => Math.random() - 0.5
+  );
+
+  ImagesDuplicatedShuffled.forEach((img) => {
     const card = createCard(img);
     grid.appendChild(card);
   });
