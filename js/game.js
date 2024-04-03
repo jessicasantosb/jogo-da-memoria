@@ -28,8 +28,9 @@ let secondCard = "";
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll(".disabled-card");
+  const cardsNum = localStorage.getItem("cardsNum");
 
-  if (disabledCards.length === 20) {
+  if (disabledCards.length === cardsNum * 2) {
     clearInterval(this.loop);
     alert(
       `Parabéns, ${playerDisplay.innerHTML}! Seu tempo foi: ${timerDisplay.innerHTML}`
@@ -89,6 +90,8 @@ const createCard = (img) => {
 
 const loadGame = () => {
   const cardsNum = localStorage.getItem("cardsNum");
+
+  console.log(cardsNum);
 
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
