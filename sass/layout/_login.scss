@@ -13,10 +13,18 @@
 .login {
     @include center();
     &__title {
-        color: $primary;
-        font-size: 2rem;
-        text-transform: uppercase;
-        padding-bottom: 2rem;
+        padding-bottom: 2.5rem;
+            & span {
+            color: $primary;
+            font-size: 2rem;
+            text-transform: uppercase;
+            padding-block: 10px;
+            @media screen and (max-width: 800px)  {
+                display: block;
+                font-size: 2.5rem;
+                text-align: center;
+            }
+        }
     }
     &__amount {
         padding-bottom: 2.5rem;

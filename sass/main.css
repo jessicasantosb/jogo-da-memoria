@@ -43,10 +43,20 @@
   align-items: center;
 }
 .login__title {
+  padding-bottom: 2.5rem;
+}
+.login__title span {
   color: #046484;
   font-size: 2rem;
   text-transform: uppercase;
-  padding-bottom: 2rem;
+  padding-block: 10px;
+}
+@media screen and (max-width: 800px) {
+  .login__title span {
+    display: block;
+    font-size: 2.5rem;
+    text-align: center;
+  }
 }
 .login__amount {
   padding-bottom: 2.5rem;
@@ -136,6 +146,7 @@
 
 .login__button {
   width: 100%;
+  margin-top: 0.5rem;
   padding: 15px;
   background-color: #FDA403;
   color: #041d12;

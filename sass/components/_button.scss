@@ -3,6 +3,7 @@
 .login {
     &__button {
         width: 100%;
+        margin-top: 0.5rem;
         padding: 15px;
         background-color: $secondary;
         color: $text;
@@ -43,8 +44,8 @@
         cursor: pointer;
         @media screen and (max-width: 800px) {
             height: 30px;
-            width: 30px;      
-        }        
+            width: 30px;
+        }
         & i {
             font-size: 2rem;
             color: $text;
