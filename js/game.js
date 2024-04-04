@@ -27,6 +27,7 @@ const createElement = (tag, className) => {
 
 let firstCard = "";
 let secondCard = "";
+let currentTime = 0;
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll(".disabled-card");
@@ -37,7 +38,7 @@ const checkEndGame = () => {
 
     const endGameData = {
       name: playerDisplay.textContent,
-      time: timerDisplay.textContent,
+      time: currentTime,
     };
 
     const bestTime = JSON.parse(localStorage.getItem("bestTime"));
@@ -167,11 +168,26 @@ const loadGame = () => {
   });
 };
 
+function fancyTimeFormat(duration) {
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = Math.floor(duration % 60);
+
+  let ret = "";
+
+  if (hours > 0) {
+    ret += hours + ":" + (minutes < 10 ? "0" : "");
+  }
+
+  ret += minutes + ":" + (seconds < 10 ? "0" : "");
+  ret += seconds;
+
+  return ret;
+}
+
 const startTimer = () => {
   this.loop = setInterval(() => {
-    const bestTime = +timerDisplay.innerHTML;
-
-    timerDisplay.innerHTML = bestTime + 1;
+    timerDisplay.textContent = fancyTimeFormat(++currentTime);
   }, 1000);
 };
 
@@ -191,15 +207,13 @@ restart.addEventListener("click", () => {
 });
 
 window.onload = () => {
-  playerDisplay.innerHTML = localStorage.getItem("player");
+  playerDisplay.textContent = localStorage.getItem("player");
   const bestTime = JSON.parse(localStorage.getItem("bestTime"));
 
   if (bestTime) {
-    bestTimeDisplay.innerHTML = bestTime.time;
-    bestPlayerDisplay.innerHTML = bestTime.name;
+    bestTimeDisplay.textContent = bestTime.time;
+    bestPlayerDisplay.textContent = bestTime.name;
   }
-
-  console.log(bestTime);
 
   startTimer();
   loadGame();
