@@ -33,20 +33,29 @@
     <div class="game__background"></div>
     <main class="game">
       <header class="game__header">
-        <button class="game__back">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <span class="game__player"></span>
-        <span>Tempo: <span class="game__timer"></span></span>
-        <button class="game__restart">
-          <i class="fa-solid fa-rotate-left"></i>
-        </button>
+        <div class="game__header-buttons">
+          <button class="game__back">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <button class="game__restart">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button class="game__pause">
+            <i class="fa-solid fa-pause"></i>
+          </button>
+        </div>
+        <div class="game__header-info">
+          <span class="game__player"></span>
+          <span class="game__timer"></span></span>
+        </div>
       </header>
       <div class="game__grid"></div>
       <footer class="game__footer">
         <p>Melhor tempo:</p>
-        <span class="game__footer-player"></span>
-        <span class="game__footer-time"></span>
+        <div>
+          <span class="game__footer-player"></span>
+          <span class="game__footer-time"></span>
+        </div>
       </footer>
     </main>
   </body>

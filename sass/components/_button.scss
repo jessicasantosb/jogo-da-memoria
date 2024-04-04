@@ -36,7 +36,7 @@
 }
 
 .game {
-    &__back, &__restart {
+    &__back, &__restart, &__pause {
         height: 50px;
         width: 50px;
         background-color: $secondary;

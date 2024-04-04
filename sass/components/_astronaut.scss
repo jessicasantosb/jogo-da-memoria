@@ -185,6 +185,10 @@
 .hand-r {
   transform: rotate(-20deg);
   right: -3.12em;
+  &:before {
+    left: 1.87em;
+    transform: rotate(90deg);
+  }
   &:after {
     right: -0.43em;
   }
