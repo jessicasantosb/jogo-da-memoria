@@ -51,6 +51,15 @@
 .login__amount {
   padding-bottom: 2.5rem;
 }
+.login__error {
+  color: red;
+  font-size: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.hide {
+  visibility: hidden;
+}
 
 .game__background::before {
   content: "";

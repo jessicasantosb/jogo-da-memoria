@@ -21,4 +21,13 @@
     &__amount {
         padding-bottom: 2.5rem;
     }
+    &__error {
+        color: red;
+        font-size: 0.75rem;
+        padding-bottom: 1rem;
+    }
+}
+
+.hide {
+    visibility: hidden;
 }
