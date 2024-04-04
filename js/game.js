@@ -94,10 +94,7 @@ const revealCard = ({ target }) => {
   }
 };
 
-const createCard = (img) => {
-  const card = createElement("div", "game__card");
-  const front = createElement("div", "game__card__face front");
-  const back = createElement("div", "game__card__face back");
+const createBackCardAstronaut = () => {
   const container = createElement("div", "container");
   const stars = createElement("div", "stars");
   const planet = createElement("div", "planet");
@@ -113,24 +110,24 @@ const createCard = (img) => {
   const legR = createElement("div", "leg-r");
   const pipe = createElement("div", "pipe");
 
-  front.style.backgroundImage = `url("../assets/${img}.jpg")`;
-
-  // elements to back face animation
   planet.appendChild(shadow);
-  astronaut.appendChild(tank);
-  astronaut.appendChild(suit);
-  suit.appendChild(helmet);
-  suit.appendChild(buttons);
-  suit.appendChild(handL);
-  suit.appendChild(handR);
-  suit.appendChild(legL);
-  suit.appendChild(legR);
-  suit.appendChild(pipe);
-  container.appendChild(stars);
-  container.appendChild(planet);
-  container.appendChild(astronaut);
-  back.appendChild(container);
+  astronaut.append(tank, suit);
+  suit.append(helmet, buttons, handL, handR, legL, legR, pipe);
+  container.append(stars, planet, astronaut);
 
+  return container;
+};
+
+const createCard = (img) => {
+  const card = createElement("div", "game__card");
+  const front = createElement("div", "game__card__face front");
+  const back = createElement("div", "game__card__face back");
+
+  front.style.backgroundImage = `url("../assets/${img}.jpg")`;
+  
+  const astronaut = createBackCardAstronaut();
+
+  back.appendChild(astronaut);
   card.appendChild(front);
   card.appendChild(back);
 
