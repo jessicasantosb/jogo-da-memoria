@@ -24,9 +24,14 @@
             cursor: pointer;
             &:hover, &:active {
                 background-color: $primary;
-            }
+            } 
         }
     }
+}
+
+.active {
+    background-color: $primary;
+    transform: scale(0.95);
 }
 
 .game {

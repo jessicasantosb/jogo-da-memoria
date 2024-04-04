@@ -1,7 +1,7 @@
 const input = document.querySelector(".login__input");
 const button = document.querySelector(".login__button");
 const form = document.querySelector(".login");
-const amount = document.querySelectorAll(".login__amount-num");
+const amount = document.querySelector(".login__amount");
 let pars = "";
 
 input.addEventListener("input", ({ target }) => {
@@ -12,10 +12,17 @@ input.addEventListener("input", ({ target }) => {
   button.setAttribute("disabled", "");
 });
 
-amount.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    pars = btn.value;
-  });
+amount.addEventListener("click", ({ target }) => {
+  const isButton = target.tagName === "BUTTON";
+
+  if (isButton) {
+    const buttons = document.querySelectorAll(".login__amount-num")
+    pars = target.value;
+    buttons.forEach(button => {
+      button.classList.remove("active");
+    });
+    target.classList.add("active");
+  }
 });
 
 form.addEventListener("submit", (event) => {
