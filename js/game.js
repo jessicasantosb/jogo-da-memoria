@@ -3,6 +3,8 @@ const playerDisplay = document.querySelector(".game__player");
 const timerDisplay = document.querySelector(".game__timer");
 const back = document.querySelector(".game__back");
 const restart = document.querySelector(".game__restart");
+const bestPlayerDisplay = document.querySelector(".game__footer-player");
+const bestTimeDisplay = document.querySelector(".game__footer-time");
 
 const images = [
   "astronaut",
@@ -32,8 +34,24 @@ const checkEndGame = () => {
 
   if (disabledCards.length === cardsNum * 2) {
     clearInterval(this.loop);
+
+    const endGameData = {
+      name: playerDisplay.textContent,
+      time: timerDisplay.textContent,
+    };
+
+    const bestTime = JSON.parse(localStorage.getItem("bestTime"));
+
+    if (bestTime) {
+      if (bestTime.time > endGameData.time) {
+        localStorage.setItem("bestTime", JSON.stringify(endGameData));
+      }
+    } else {
+      localStorage.setItem("bestTime", JSON.stringify(endGameData));
+    }
+
     alert(
-      `Parabéns, ${playerDisplay.innerHTML}! Seu tempo foi: ${timerDisplay.innerHTML}`
+      `Parabéns, ${playerDisplay.textContent}! Seu tempo foi: ${timerDisplay.textContent}`
     );
   }
 };
@@ -127,10 +145,12 @@ const loadGame = () => {
     grid.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
   }
 
-  if (cardsNum === "6") grid.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
+  if (cardsNum === "6")
+    grid.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
 
-  if (cardsNum === "10") grid.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
- 
+  if (cardsNum === "10")
+    grid.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
+
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
   const imagesSliced = imagesShuffled.slice(0, cardsNum);
@@ -149,9 +169,9 @@ const loadGame = () => {
 
 const startTimer = () => {
   this.loop = setInterval(() => {
-    const currentTime = +timerDisplay.innerHTML;
+    const bestTime = +timerDisplay.innerHTML;
 
-    timerDisplay.innerHTML = currentTime + 1;
+    timerDisplay.innerHTML = bestTime + 1;
   }, 1000);
 };
 
@@ -172,6 +192,15 @@ restart.addEventListener("click", () => {
 
 window.onload = () => {
   playerDisplay.innerHTML = localStorage.getItem("player");
+  const bestTime = JSON.parse(localStorage.getItem("bestTime"));
+
+  if (bestTime) {
+    bestTimeDisplay.innerHTML = bestTime.time;
+    bestPlayerDisplay.innerHTML = bestTime.name;
+  }
+
+  console.log(bestTime);
+
   startTimer();
   loadGame();
 };
