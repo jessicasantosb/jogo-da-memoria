@@ -7,31 +7,47 @@ let pars = "";
 let nameChecked = false;
 let buttonChecked = false;
 
-input.addEventListener("input", ({ target }) => {
-  if (target.value.length > 2 && target.value.length <= 10) {
-    error.classList.add("hide");
-    if (buttonChecked) button.removeAttribute("disabled");
-    return;
+const handleDisableButton = () => {
+  if (nameChecked && buttonChecked) {
+    button.removeAttribute("disabled");
   } else {
-    error.classList.remove("hide");
     button.setAttribute("disabled", "");
   }
-});
+};
 
-amount.addEventListener("click", ({ target }) => {
-  const isButton = target.tagName === "BUTTON";
+const handleName = ({ target }) => {
+  const validateName = target.value.length > 2 && target.value.length <= 10;
 
-  if (isButton) {
-    const buttons = document.querySelectorAll(".login__amount-num");
-    pars = target.value;
-    buttons.forEach((button) => {
-      button.classList.remove("active");
-      buttonChecked = true;
-    });
-    target.classList.add("active");
-    if (nameChecked) button.removeAttribute("disabled");
+  if (validateName) {
+    error.classList.add("hide");
+    nameChecked = true;
+  } else {
+    error.classList.remove("hide");
+    nameChecked = false;
   }
-});
+
+  handleDisableButton();
+};
+
+const handleAmount = ({ target }) => {
+  const isButton = target.tagName === "BUTTON";
+  if (!isButton) return null;
+
+  const buttons = document.querySelectorAll(".login__amount-num");
+  buttons.forEach((button) => {
+    button.classList.remove("active");
+  });
+  target.classList.add("active");
+
+  buttonChecked = true;
+  pars = target.value;
+
+  handleDisableButton();
+};
+
+input.addEventListener("input", handleName);
+
+amount.addEventListener("click", handleAmount);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
