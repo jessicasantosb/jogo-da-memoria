@@ -1,7 +1,7 @@
 @use '../base/variables' as *;
 @use "../base/mixin" as *;
 
-.login__background::before {
+.login-background::before {
     @include background(url("../../assets/login-bg.jpg") no-repeat center center);
 }
 
@@ -26,14 +26,14 @@
             }
         }
     }
-    &__amount {
-        padding-bottom: 2.5rem;
-    }
     &__error {
         color: red;
         font-size: 0.75rem;
         padding-bottom: 1rem;
     }
+    &__amount {
+        padding-bottom: 2.5rem;
+    }   
 }
 
 .hide {

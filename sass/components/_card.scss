@@ -3,7 +3,7 @@
 .game__card {
     width: 100%;
     border-radius: 5px;
-    transition: all 1s ease;
+    transition: all 600ms ease;
     transform-style: preserve-3d;
     background-color: $bg;
     &__face {
@@ -15,7 +15,7 @@
         background-position: center;
         border: 2px solid $secondary;
         border-radius: 5px;
-        transition: all 2s ease;
+        transition: all 1s ease;
         pointer-events: none;
         @media screen and (max-width: 700px) {
             font-size: 3px;

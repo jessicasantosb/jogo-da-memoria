@@ -1,7 +1,7 @@
 @use "../base/mixin" as *;
 @use "../base//variables" as *;
 
-.game__background::before {
+.game-background::before {
     @include background(url("../../assets/game-bg.jpg") no-repeat center center, 0.7);
 }
 

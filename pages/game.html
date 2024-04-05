@@ -29,32 +29,36 @@
 
     <title>Jogo da memória</title>
   </head>
+
   <body>
-    <div class="game__background"></div>
+    <div class="game-background"></div>
     <main class="game">
       <header class="game__header">
         <div class="game__header-buttons">
-          <button class="game__back">
-            <i class="fa-solid fa-arrow-left"></i>
+          <button class="button button--circle" data-button="back">
+            <i class="fa-solid fa-arrow-left" data-icon="back"></i>
           </button>
-          <button class="game__restart">
-            <i class="fa-solid fa-rotate-left"></i>
+          <button class="button button--circle" data-button="restart">
+            <i class="fa-solid fa-rotate-left" data-icon="restart"></i>
           </button>
-          <button class="game__pause">
-            <i class="fa-solid fa-pause"></i>
+          <button class="button button--circle" data-button="pause">
+            <i class="fa-solid fa-pause" data-icon="pause"></i>
           </button>
         </div>
+
         <div class="game__header-info">
-          <span class="game__player"></span>
-          <span class="game__timer"></span></span>
+          <span class="game__player" data-header="player"></span>
+          <span class="game__timer" data-header="timer">0:00</span>
         </div>
       </header>
-      <div class="game__grid"></div>
+
+      <div class="game__grid" data-element="grid"></div>
+
       <footer class="game__footer">
         <p>Melhor tempo:</p>
         <div>
-          <span class="game__footer-player"></span>
-          <span class="game__footer-time"></span>
+          <span class="game__footer-player" data-footer="player"></span>
+          <span class="game__footer-time" data-footer="time"></span>
         </div>
       </footer>
     </main>

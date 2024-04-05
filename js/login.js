@@ -1,8 +1,9 @@
-const input = document.querySelector(".login__input");
-const button = document.querySelector(".login__button");
-const form = document.querySelector(".login");
-const amount = document.querySelector(".login__amount");
-const error = document.querySelector(".login__error");
+const input = document.querySelector('[data-input="name"]');
+const button = document.querySelector('[data-button="login"]');
+const form = document.querySelector('[data-form="login"]');
+const amount = document.querySelector('[data-buttons="amount"]');
+const error = document.querySelector('[data-erro="login"]');
+
 let pars = "";
 let nameChecked = false;
 let buttonChecked = false;
@@ -33,7 +34,7 @@ const handleAmount = ({ target }) => {
   const isButton = target.tagName === "BUTTON";
   if (!isButton) return null;
 
-  const buttons = document.querySelectorAll(".login__amount-num");
+  const buttons = document.querySelectorAll('[data-button="number"]');
   buttons.forEach((button) => {
     button.classList.remove("active");
   });

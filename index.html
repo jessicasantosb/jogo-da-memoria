@@ -21,23 +21,57 @@
     <title>Jogo da memória</title>
   </head>
   <body>
-    <div class="login__background"></div>
+    <div class="login-background"></div>
     <main class="login-container">
-      <form class="login">
+      <form class="login" data-form="login">
         <h1 class="login__title">
           <span>jogo</span>
           <span>da</span>
           <span>memória</span>
-          </h1>
-        <input type="text" placeholder="Nome" class="login__input" />
-        <p class="login__error hide">Insira entre 3 e 10 caracteres</p>
-        <div class="login__amount">
-          <button type="button" class="login__amount-num" value="2">4</button>
-          <button type="button" class="login__amount-num" value="4">8</button>
-          <button type="button" class="login__amount-num" value="6">12</button>
-          <button type="button" class="login__amount-num" value="10">20</button>
+        </h1>
+        <input
+          type="text"
+          placeholder="Nome"
+          class="login__input"
+          data-input="name"
+        />
+        <p class="login__error hide" data-erro="login">
+          Insira entre 3 e 10 caracteres
+        </p>
+        <div class="login__amount" data-buttons="amount">
+          <button
+            type="button"
+            class="button button--square"
+            data-button="number"
+            value="4"
+          >
+            8
+          </button>
+          <button
+            type="button"
+            class="button button--square"
+            data-button="number"
+            value="6"
+          >
+            12
+          </button>
+          <button
+            type="button"
+            class="button button--square"
+            data-button="number"
+            value="10"
+          >
+            20
+          </button>
         </div>
-        <button type="submit" class="login__button" disabled>Jogar</button>
+        <button
+          type="submit"
+          class="button button--large"
+          data-button="login"
+          disabled
+        >
+          Jogar
+        </button>
       </form>
     </main>
   </body>

@@ -1,10 +1,11 @@
-const grid = document.querySelector(".game__grid");
-const playerDisplay = document.querySelector(".game__player");
-const timerDisplay = document.querySelector(".game__timer");
-const back = document.querySelector(".game__back");
-const restart = document.querySelector(".game__restart");
-const bestPlayerDisplay = document.querySelector(".game__footer-player");
-const bestTimeDisplay = document.querySelector(".game__footer-time");
+const grid = document.querySelector('[data-element="grid"]');
+const playerDisplay = document.querySelector('[data-header="player"]');
+const timerDisplay = document.querySelector('[data-header="timer"]');
+const back = document.querySelector('[data-button="back"]');
+const restart = document.querySelector('[data-button="restart"]');
+const bestPlayerDisplay = document.querySelector('[data-footer="player"]');
+const bestTimeDisplay = document.querySelector('[data-footer="time"]');
+
 const cardsNum = Number(localStorage.getItem("cardsNum"));
 const bestTime = JSON.parse(localStorage.getItem("bestTime"));
 
