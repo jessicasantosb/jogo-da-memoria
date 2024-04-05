@@ -5,6 +5,8 @@ const back = document.querySelector(".game__back");
 const restart = document.querySelector(".game__restart");
 const bestPlayerDisplay = document.querySelector(".game__footer-player");
 const bestTimeDisplay = document.querySelector(".game__footer-time");
+const cardsNum = Number(localStorage.getItem("cardsNum"));
+const bestTime = JSON.parse(localStorage.getItem("bestTime"));
 
 const images = [
   "astronaut",
@@ -19,41 +21,79 @@ const images = [
   "uranus",
 ];
 
+let firstCard = "";
+let secondCard = "";
+let currentTime = 0;
+
 const createElement = (tag, className) => {
   const element = document.createElement(tag);
   element.className = className;
   return element;
 };
 
-let firstCard = "";
-let secondCard = "";
-let currentTime = 0;
+const fancyTimeFormat = (duration) => {
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = Math.floor(duration % 60);
+
+  let ret = "";
+
+  if (hours > 0) {
+    ret += hours + ":" + (minutes < 10 ? "0" : "");
+  }
+
+  ret += minutes + ":" + (seconds < 10 ? "0" : "");
+  ret += seconds;
+
+  return ret;
+};
+
+const getGameLevel = () => {
+  if (cardsNum === 4) return "easy";
+  if (cardsNum === 6) return "medium";
+  if (cardsNum === 10) return "hard";
+};
+
+const gameLevel = getGameLevel();
+
+const saveBestTimeToLocalStorage = () => {
+  const endGameData = {
+    name: playerDisplay.textContent,
+    time: currentTime,
+  };
+
+  if (!bestTime) return {};
+  if (bestTime[gameLevel]) {
+    if (bestTime[gameLevel].time > endGameData.time) {
+      bestTime[gameLevel] = endGameData;
+      localStorage.setItem("bestTime", JSON.stringify(bestTime));
+    }
+  } else {
+    bestTime[gameLevel] = endGameData;
+    localStorage.setItem("bestTime", JSON.stringify(bestTime));
+  }
+};
+
+const displayBestTime = () => {
+  if (bestTime[gameLevel]) {
+    bestTimeDisplay.textContent = fancyTimeFormat(bestTime[gameLevel].time);
+    bestPlayerDisplay.textContent = bestTime[gameLevel].name;
+  }
+};
 
 const checkEndGame = () => {
   const disabledCards = document.querySelectorAll(".disabled-card");
-  const cardsNum = localStorage.getItem("cardsNum");
 
   if (disabledCards.length === cardsNum * 2) {
-    clearInterval(this.loop);
+    setTimeout(() => {
+      clearInterval(this.loop);
 
-    const endGameData = {
-      name: playerDisplay.textContent,
-      time: currentTime,
-    };
+      saveBestTimeToLocalStorage();
 
-    const bestTime = JSON.parse(localStorage.getItem("bestTime"));
-
-    if (bestTime) {
-      if (bestTime.time > endGameData.time) {
-        localStorage.setItem("bestTime", JSON.stringify(endGameData));
-      }
-    } else {
-      localStorage.setItem("bestTime", JSON.stringify(endGameData));
-    }
-
-    alert(
-      `Parabéns, ${playerDisplay.textContent}! Seu tempo foi: ${timerDisplay.textContent}`
-    );
+      alert(
+        `Parabéns, ${playerDisplay.textContent}! Seu tempo foi: ${timerDisplay.textContent}`
+      );
+    }, 600);
   }
 };
 
@@ -124,7 +164,7 @@ const createCard = (img) => {
   const back = createElement("div", "game__card__face back");
 
   front.style.backgroundImage = `url("../assets/${img}.jpg")`;
-  
+
   const astronaut = createBackCardAstronaut();
 
   back.appendChild(astronaut);
@@ -137,16 +177,14 @@ const createCard = (img) => {
 };
 
 const loadGame = () => {
-  const cardsNum = localStorage.getItem("cardsNum");
-
-  if (cardsNum === "2" || cardsNum === "4") {
+  if (cardsNum === 4) {
     grid.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
   }
 
-  if (cardsNum === "6")
+  if (cardsNum === 6)
     grid.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
 
-  if (cardsNum === "10")
+  if (cardsNum === 10)
     grid.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
 
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
@@ -164,23 +202,6 @@ const loadGame = () => {
     grid.appendChild(card);
   });
 };
-
-function fancyTimeFormat(duration) {
-  const hours = Math.floor(duration / 3600);
-  const minutes = Math.floor((duration % 3600) / 60);
-  const seconds = Math.floor(duration % 60);
-
-  let ret = "";
-
-  if (hours > 0) {
-    ret += hours + ":" + (minutes < 10 ? "0" : "");
-  }
-
-  ret += minutes + ":" + (seconds < 10 ? "0" : "");
-  ret += seconds;
-
-  return ret;
-}
 
 const startTimer = () => {
   this.loop = setInterval(() => {
@@ -205,13 +226,8 @@ restart.addEventListener("click", () => {
 
 window.onload = () => {
   playerDisplay.textContent = localStorage.getItem("player");
-  const bestTime = JSON.parse(localStorage.getItem("bestTime"));
 
-  if (bestTime) {
-    bestTimeDisplay.textContent = bestTime.time;
-    bestPlayerDisplay.textContent = bestTime.name;
-  }
-
+  displayBestTime();
   startTimer();
   loadGame();
 };
