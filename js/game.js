@@ -1,8 +1,7 @@
-const grid = document.querySelector('[data-element="grid"]');
+const cardsContainer = document.querySelector('[data-element="container"]');
 const playerDisplay = document.querySelector('[data-header="player"]');
 const timerDisplay = document.querySelector('[data-header="timer"]');
-const back = document.querySelector('[data-button="back"]');
-const restart = document.querySelector('[data-button="restart"]');
+const buttons = document.querySelector('[data-buttons="header"]');
 const bestPlayerDisplay = document.querySelector('[data-footer="player"]');
 const bestTimeDisplay = document.querySelector('[data-footer="time"]');
 
@@ -179,14 +178,14 @@ const createCard = (img) => {
 
 const loadGame = () => {
   if (cardsNum === 4) {
-    grid.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
+    cardsContainer.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
   }
 
   if (cardsNum === 6)
-    grid.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
+    cardsContainer.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
 
   if (cardsNum === 10)
-    grid.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
+    cardsContainer.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
 
   const imagesShuffled = images.sort(() => Math.random() - 0.5);
 
@@ -200,7 +199,7 @@ const loadGame = () => {
 
   ImagesDuplicatedShuffled.forEach((img) => {
     const card = createCard(img);
-    grid.appendChild(card);
+    cardsContainer.appendChild(card);
   });
 };
 
@@ -210,20 +209,49 @@ const startTimer = () => {
   }, 1000);
 };
 
-grid.addEventListener("click", revealCard);
-
-back.addEventListener("click", () => {
+const returnPage = () => {
   const answer = window.confirm("Deseja abandonar a partida?");
   if (answer) window.location = "../index.html";
-});
+};
 
-restart.addEventListener("click", () => {
+const restartGame = () => {
   const answer = window.confirm("Deseja reiniciar a partida?");
   if (answer)
     setTimeout(() => {
       window.location.reload(true);
     }, 200);
-});
+};
+
+const pauseGame = (button) => {
+  cardsContainer.style.pointerEvents = "none";
+  cardsContainer.style.filter = "opacity(.5) grayScale(1)";
+  clearInterval(this.loop);
+
+  button.innerHTML = '<i class="fa-solid fa-play" data-icon="play"></i>';
+  button.dataset.button = "play";
+};
+
+const playGame = (button) => {
+  cardsContainer.style.pointerEvents = "";
+  cardsContainer.style.filter = "";
+
+  button.innerHTML = '<i class="fa-solid fa-pause" data-icon="pause"></i>';
+  button.dataset.button = "pause";
+  startTimer();
+};
+
+const handleHeaderButtons = ({ target }) => {
+  const button = target.dataset.button;
+
+  if (!button) return null;
+  if (button === "return") return returnPage();
+  if (button === "restart") return restartGame();
+  if (button === "pause") return pauseGame(target);
+  if (button === "play") return playGame(target);
+};
+
+cardsContainer.addEventListener("click", revealCard);
+buttons.addEventListener("click", handleHeaderButtons);
 
 window.onload = () => {
   playerDisplay.textContent = localStorage.getItem("player");
