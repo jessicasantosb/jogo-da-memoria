@@ -13,6 +13,7 @@
     -webkit-appearance: none;
     appearance: none;
     transition: all 400ms ease;
+    caret-color: $secondary;
     &:focus {
         outline: none;
         box-shadow: none;

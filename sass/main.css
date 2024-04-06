@@ -46,16 +46,19 @@
   padding-bottom: 2.5rem;
 }
 .login__title span {
-  color: #046484;
-  font-size: 2rem;
-  text-transform: uppercase;
+  display: block;
   padding-block: 10px;
+  color: #046484;
+  font-size: 4rem;
+  text-transform: uppercase;
+  text-align: right;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 @media screen and (max-width: 800px) {
   .login__title span {
-    display: block;
     font-size: 2.5rem;
-    text-align: center;
   }
 }
 .login__error {
@@ -287,6 +290,7 @@
   -moz-appearance: none;
        appearance: none;
   transition: all 400ms ease;
+  caret-color: #FDA403;
 }
 .login__input:focus {
   outline: none;
