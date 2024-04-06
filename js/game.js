@@ -31,6 +31,10 @@ const createElement = (tag, className) => {
   return element;
 };
 
+const shuffle = (array) => {
+  array.sort(() => Math.random() - 0.5);
+};
+
 const fancyTimeFormat = (duration) => {
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
@@ -177,27 +181,14 @@ const createCard = (img) => {
 };
 
 const loadGame = () => {
-  if (cardsNum === 4) {
-    cardsContainer.style.gridTemplateColumns = `repeat(${cardsNum}, minmax(10%, 1fr))`;
-  }
+  cardsContainer.classList.add(`game--${gameLevel}`);
 
-  if (cardsNum === 6)
-    cardsContainer.style.gridTemplateColumns = `repeat(4, minmax(10%, 1fr))`;
+  shuffle(images);
+  const imageSliced = images.slice(0, cardsNum);
+  const imagesDuplicated = [...imageSliced, ...imageSliced];
+  shuffle(imagesDuplicated);
 
-  if (cardsNum === 10)
-    cardsContainer.style.gridTemplateColumns = `repeat(5, minmax(10%, 1fr))`;
-
-  const imagesShuffled = images.sort(() => Math.random() - 0.5);
-
-  const imagesSliced = imagesShuffled.slice(0, cardsNum);
-
-  const imagesDuplicated = [...imagesSliced, ...imagesSliced];
-
-  const ImagesDuplicatedShuffled = imagesDuplicated.sort(
-    () => Math.random() - 0.5
-  );
-
-  ImagesDuplicatedShuffled.forEach((img) => {
+  imagesDuplicated.forEach((img) => {
     const card = createCard(img);
     cardsContainer.appendChild(card);
   });

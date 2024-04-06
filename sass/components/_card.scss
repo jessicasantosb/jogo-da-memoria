@@ -6,6 +6,7 @@
     transition: all 600ms ease;
     transform-style: preserve-3d;
     background-color: $bg;
+    aspect-ratio: 2/3;
     &__face {
         position: absolute;
         width: 100%;
