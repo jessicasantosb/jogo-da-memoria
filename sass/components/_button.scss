@@ -4,8 +4,15 @@
     height: 50px;
     background-color: $secondary;
     color: $text;
+    box-shadow: #f7f7f7 0px 2px 4px, #f7f7f7 0px 2px 4px;
     font-size: 1rem;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 600ms ease;
+    &:hover {
+        box-shadow: none;
+    }
 }
 
 .button--large {
@@ -34,12 +41,16 @@
 }
 
 .button--circle{
+    position: relative;
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    @media screen and (max-width: 800px) {
-        height: 30px;
-        width: 30px;
+    background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
+    box-shadow: #f7f7f7 1px 1px 2px, inset 0px 2px 3px #f7f7f7;
+    border: solid 1px transparent;
+    &:hover {
+        box-shadow: none;
+        transform: scale(0.98);
     }
     & i {
         font-size: 2rem;
@@ -48,5 +59,8 @@
             font-size: 1rem;       
         }
     }
-    
+    @media screen and (max-width: 800px) {
+        height: 30px;
+        width: 30px;
+    }
 }

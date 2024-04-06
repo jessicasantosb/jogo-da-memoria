@@ -6,7 +6,6 @@
     transition: all 600ms ease;
     transform-style: preserve-3d;
     background-color: $bg;
-    aspect-ratio: 2/3;
     &__face {
         position: absolute;
         width: 100%;
@@ -29,7 +28,7 @@
         transform: rotateY(180deg);
     }
     & .back {
-        background: $primary;
+        background: $gradient;
         backface-visibility: hidden;
     }
 }
