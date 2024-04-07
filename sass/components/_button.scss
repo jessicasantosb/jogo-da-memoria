@@ -1,66 +1,67 @@
 @use "../base/variables" as *;
 
 .button {
-    height: 50px;
-    background-color: $secondary;
-    color: $text;
-    box-shadow: #f7f7f7 0px 2px 4px, #f7f7f7 0px 2px 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: all 600ms ease;
-    &:hover {
-        box-shadow: none;
-    }
+  height: 50px;
+  background-color: $secondary;
+  color: $text;
+  box-shadow: #f7f7f7 0px 2px 4px, #f7f7f7 0px 2px 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 600ms ease;
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .button--large {
-    width: 100%;
-    margin-top: 0.5rem;
-    padding: 15px;   
-    border-radius: 10px;
-    &:disabled {
-        background-color: #dddbdb;
-        color: #9e9d9d;
-    }
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 15px;
+  border-radius: 10px;
+  &:disabled {
+    background-color: #dddbdb;
+    color: #9e9d9d;
+  }
 }
 
 .button--square {
-    aspect-ratio: 1;
-    height: 50px;
-    border-radius: 5px;
-    &:hover, &:active {
-        background-color: $primary;
-    } 
+  aspect-ratio: 1;
+  height: 50px;
+  border-radius: 5px;
+  &:hover,
+  &:active {
+    background-color: $primary;
+  }
 }
 
 .active {
-    background-color: $primary;
-    transform: scale(0.95);
+  background-color: $primary;
+  transform: scale(0.95);
 }
 
-.button--circle{
-    position: relative;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
-    box-shadow: #f7f7f7 1px 1px 2px, inset 0px 2px 3px #f7f7f7;
-    border: solid 1px transparent;
-    &:hover {
-        box-shadow: none;
-        transform: scale(0.98);
-    }
-    & i {
-        font-size: 2rem;
-        pointer-events: none;
-        @media screen and (max-width: 800px) {
-            font-size: 1rem;       
-        }
-    }
+.button--circle {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
+  box-shadow: #f7f7f7 1px 1px 2px, inset 0px 2px 3px #f7f7f7;
+  border: solid 1px transparent;
+  &:hover {
+    box-shadow: none;
+    transform: scale(0.98);
+  }
+  & i {
+    font-size: 2rem;
+    pointer-events: none;
     @media screen and (max-width: 800px) {
-        height: 30px;
-        width: 30px;
+      font-size: 1rem;
     }
+  }
+  @media screen and (max-width: 800px) {
+    height: 30px;
+    width: 30px;
+  }
 }

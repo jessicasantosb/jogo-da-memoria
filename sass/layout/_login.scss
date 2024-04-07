@@ -1,43 +1,43 @@
-@use '../base/variables' as *;
+@use "../base/variables" as *;
 @use "../base/mixin" as *;
 
 .login-background::before {
-    @include background(url("../../assets/login-bg.jpg") no-repeat center center);
+  @include background(url("../../assets/login-bg.jpg") no-repeat center center);
 }
 
 .login-container {
-    @include center();
-    @include container();
+  @include center();
+  @include container();
 }
 
 .login {
-    @include center();
-    &__title {
-        padding-bottom: 2.5rem;
-            & span {
-                display: block;
-                padding-block: 10px;
-                color: $primary;
-                font-size: 4rem;
-                text-transform: uppercase;
-                text-align: right;
-                user-select: none;
-                @media screen and (max-width: 800px)  {
-                    font-size: 2.5rem;
-                }
-        }
+  @include center();
+  &__title {
+    padding-bottom: 2.5rem;
+    & span {
+      display: block;
+      padding-block: 10px;
+      color: $primary;
+      font-size: 4rem;
+      text-transform: uppercase;
+      text-align: right;
+      user-select: none;
+      @media screen and (max-width: 800px) {
+        font-size: 2.5rem;
+      }
     }
-    &__error {
-        color: red;
-        font-size: 0.75rem;
-        padding-bottom: 1rem;
-    }
-    &__amount {
-        padding-bottom: 2.5rem;
-        user-select: none;
-    }   
+  }
+  &__error {
+    color: red;
+    font-size: 0.75rem;
+    padding-bottom: 1rem;
+  }
+  &__amount {
+    padding-bottom: 2.5rem;
+    user-select: none;
+  }
 }
 
 .hide {
-    visibility: hidden;
+  visibility: hidden;
 }

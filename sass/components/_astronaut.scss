@@ -193,9 +193,8 @@
     right: -0.43em;
   }
 }
-  
-.hand-l
-.hand-r:before {
+
+.hand-l .hand-r:before {
   left: 1.87em;
   transform: rotate(90deg);
 }
