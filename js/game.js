@@ -6,7 +6,7 @@ const bestPlayerDisplay = document.querySelector('[data-footer="player"]');
 const bestTimeDisplay = document.querySelector('[data-footer="time"]');
 
 const cardsNum = Number(localStorage.getItem("cardsNum"));
-const bestTime = JSON.parse(localStorage.getItem("bestTime"));
+const bestTime = JSON.parse(localStorage.getItem("bestTime")) || {};
 
 const images = [
   "astronaut",
@@ -66,7 +66,6 @@ const saveBestTimeToLocalStorage = () => {
     time: currentTime,
   };
 
-  if (!bestTime) return {};
   if (bestTime[gameLevel]) {
     if (bestTime[gameLevel].time > endGameData.time) {
       bestTime[gameLevel] = endGameData;
