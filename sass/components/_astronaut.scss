@@ -22,6 +22,7 @@
   position: absolute;
   top: 2.81em;
   left: 13.75em;
+
   &:before {
     position: absolute;
     content: "";
@@ -33,6 +34,7 @@
     left: 4.25em;
     box-shadow: 1.42em 3.65em 0 -0.25em #fcec8e, -1.25em 4.75em 0 0.12em #fcec8e;
   }
+
   &:after {
     position: absolute;
     content: "";
@@ -72,6 +74,7 @@
     transform: rotate(-30deg) translateY(1.87em);
   }
 }
+
 .suit {
   position: absolute;
   background-color: #e2e9f4;
@@ -88,6 +91,7 @@
   position: absolute;
   top: -5.43em;
   border-radius: 45%;
+
   &:before {
     position: absolute;
     content: "";
@@ -98,6 +102,7 @@
     left: 0.62em;
     top: 0.43em;
   }
+
   &:after {
     content: "";
     position: absolute;
@@ -126,6 +131,7 @@
   border-radius: 0.5em;
   position: absolute;
   top: 1.56em;
+
   &:after {
     position: absolute;
     content: "";
@@ -137,6 +143,7 @@
     left: 0.25em;
     box-shadow: 1.12em 0 #fbd31f, 2.25em 0 #e62c1b;
   }
+
   &:before {
     position: absolute;
     content: "";
@@ -173,10 +180,12 @@
 .hand-l {
   transform: rotate(20deg);
   left: -3.12em;
+
   &:before {
     right: 1.87em;
     transform: rotate(-90deg);
   }
+
   &:after {
     left: -0.43em;
   }
@@ -185,10 +194,12 @@
 .hand-r {
   transform: rotate(-20deg);
   right: -3.12em;
+
   &:before {
     left: 1.87em;
     transform: rotate(90deg);
   }
+
   &:after {
     right: -0.43em;
   }
@@ -263,6 +274,7 @@
   border-radius: 0 0 3.75em 1.87em;
   left: 2.81em;
   top: 4.5em;
+
   &:before {
     position: absolute;
     content: "";

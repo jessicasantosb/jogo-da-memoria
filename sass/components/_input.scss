@@ -1,4 +1,4 @@
-@use "../base/variables" as *;
+@use "../base/variables"as *;
 
 .login__input {
   width: 100%;
@@ -14,14 +14,17 @@
   appearance: none;
   transition: all 400ms ease;
   caret-color: $secondary;
+
   &:focus {
     outline: none;
     box-shadow: none;
     border-color: $secondary;
   }
+
   &:valid {
     transform: scale(0.98);
   }
+
   &::placeholder {
     color: $bg;
   }

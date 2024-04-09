@@ -1,5 +1,5 @@
-@use "../base/variables" as *;
-@use "../base/mixin" as *;
+@use "../base/variables"as *;
+@use "../base/mixin"as *;
 
 .login-background::before {
   @include background(url("../../assets/login-bg.jpg") no-repeat center center);
@@ -12,8 +12,10 @@
 
 .login {
   @include center();
+
   &__title {
     padding-bottom: 2.5rem;
+
     & span {
       display: block;
       padding-block: 10px;
@@ -22,16 +24,19 @@
       text-transform: uppercase;
       text-align: right;
       user-select: none;
+
       @media screen and (max-width: 800px) {
         font-size: 2.5rem;
       }
     }
   }
+
   &__error {
     color: red;
     font-size: 0.75rem;
     padding-bottom: 1rem;
   }
+
   &__amount {
     padding-bottom: 2.5rem;
     user-select: none;

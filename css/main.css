@@ -30,11 +30,6 @@
   margin-inline: auto;
   padding-inline: 2rem;
 }
-@media screen and (max-width: 800px) {
-  .login-container {
-    max-width: 500px;
-  }
-}
 
 .login {
   display: flex;
@@ -100,11 +95,6 @@
   padding-inline: 2rem;
   padding-block: 1rem;
 }
-@media screen and (max-width: 800px) {
-  .game {
-    max-width: 500px;
-  }
-}
 .game__header {
   display: flex;
   flex-direction: column;
@@ -133,7 +123,7 @@
   align-items: center;
 }
 .game__header span {
-  color: #FDA403;
+  color: #fda403;
   font-size: 1.15rem;
 }
 .game__header span:first-child {
@@ -163,6 +153,7 @@
   height: 100%;
   margin-block: 2rem;
   display: grid;
+  justify-items: center;
   gap: 15px;
 }
 .game__footer {
@@ -177,7 +168,7 @@
   line-height: 25px;
 }
 .game__footer * {
-  color: #FDA403;
+  color: #fda403;
 }
 .game__footer div {
   text-align: right;
@@ -186,6 +177,11 @@
 .game--easy {
   grid-template-columns: repeat(4, 1fr);
 }
+@media screen and (max-width: 700px) {
+  .game--easy {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 .game--medium {
   grid-template-columns: repeat(6, 1fr);
@@ -193,6 +189,11 @@
 @media screen and (max-width: 700px) {
   .game--medium {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .game--medium {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -207,7 +208,7 @@
 
 .button {
   height: 50px;
-  background-color: #FDA403;
+  background-color: #fda403;
   color: #041d12;
   box-shadow: #f7f7f7 0px 2px 4px, #f7f7f7 0px 2px 4px;
   font-size: 1rem;
@@ -290,12 +291,12 @@
   -moz-appearance: none;
        appearance: none;
   transition: all 400ms ease;
-  caret-color: #FDA403;
+  caret-color: #fda403;
 }
 .login__input:focus {
   outline: none;
   box-shadow: none;
-  border-color: #FDA403;
+  border-color: #fda403;
 }
 .login__input:valid {
   transform: scale(0.98);
@@ -307,39 +308,40 @@
   color: rgba(204, 204, 204, 0.8);
 }
 
-.game__card {
-  width: 100%;
+.game-card {
+  aspect-ratio: 2/3;
+  height: 100%;
   border-radius: 5px;
   transition: all 600ms ease;
   transform-style: preserve-3d;
   background-color: rgba(204, 204, 204, 0.8);
 }
-.game__card__face {
+.game-card__face {
   position: absolute;
   width: 100%;
   height: 100%;
   font-size: 4px;
   background-size: cover;
   background-position: center;
-  border: 2px solid #FDA403;
+  border: 2px solid #fda403;
   border-radius: 5px;
   transition: all 1s ease;
   pointer-events: none;
 }
 @media screen and (max-width: 700px) {
-  .game__card__face {
+  .game-card__face {
     font-size: 3px;
   }
 }
 @media screen and (max-width: 500px) {
-  .game__card__face {
+  .game-card__face {
     font-size: 2px;
   }
 }
-.game__card .front {
+.game-card .front {
   transform: rotateY(180deg);
 }
-.game__card .back {
+.game-card .back {
   background: linear-gradient(62deg, rgb(4, 100, 132) 0%, rgb(15, 85, 112) 29%, rgb(20, 58, 74) 58%, rgb(19, 44, 56) 100%);
   backface-visibility: hidden;
 }

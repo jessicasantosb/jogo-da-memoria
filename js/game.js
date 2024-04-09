@@ -5,24 +5,13 @@ const buttons = document.querySelector('[data-buttons="header"]');
 const bestPlayerDisplay = document.querySelector('[data-footer="player"]');
 const bestTimeDisplay = document.querySelector('[data-footer="time"]');
 
-const cardsNum = Number(localStorage.getItem("cardsNum"));
-const bestTime = JSON.parse(localStorage.getItem("bestTime")) || {};
+const cardsNum = Number(localStorage.getItem('cardsNum'));
+const bestTime = JSON.parse(localStorage.getItem('bestTime')) || {};
 
-const images = [
-  "astronaut",
-  "astronaut2",
-  "earth",
-  "jupiter",
-  "mars",
-  "moon",
-  "moon2",
-  "saturn",
-  "space",
-  "uranus",
-];
+const images = ['astronaut', 'astronaut2', 'earth', 'jupiter', 'mars', 'moon', 'moon2', 'saturn', 'space', 'uranus'];
 
-let firstCard = "";
-let secondCard = "";
+let firstCard = '';
+let secondCard = '';
 let currentTime = 0;
 
 const createElement = (tag, className) => {
@@ -40,22 +29,22 @@ const fancyTimeFormat = (duration) => {
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = Math.floor(duration % 60);
 
-  let ret = "";
+  let ret = '';
 
   if (hours > 0) {
-    ret += hours + ":" + (minutes < 10 ? "0" : "");
+    ret += hours + ':' + (minutes < 10 ? '0' : '');
   }
 
-  ret += minutes + ":" + (seconds < 10 ? "0" : "");
+  ret += minutes + ':' + (seconds < 10 ? '0' : '');
   ret += seconds;
 
   return ret;
 };
 
 const getGameLevel = () => {
-  if (cardsNum === 4) return "easy";
-  if (cardsNum === 6) return "medium";
-  if (cardsNum === 10) return "hard";
+  if (cardsNum === 4) return 'easy';
+  if (cardsNum === 6) return 'medium';
+  if (cardsNum === 10) return 'hard';
 };
 
 const gameLevel = getGameLevel();
@@ -69,11 +58,11 @@ const saveBestTimeToLocalStorage = () => {
   if (bestTime[gameLevel]) {
     if (bestTime[gameLevel].time > endGameData.time) {
       bestTime[gameLevel] = endGameData;
-      localStorage.setItem("bestTime", JSON.stringify(bestTime));
+      localStorage.setItem('bestTime', JSON.stringify(bestTime));
     }
   } else {
     bestTime[gameLevel] = endGameData;
-    localStorage.setItem("bestTime", JSON.stringify(bestTime));
+    localStorage.setItem('bestTime', JSON.stringify(bestTime));
   }
 };
 
@@ -85,7 +74,7 @@ const displayBestTime = () => {
 };
 
 const checkEndGame = () => {
-  const disabledCards = document.querySelectorAll(".disabled-card");
+  const disabledCards = document.querySelectorAll('.disabled-card');
 
   if (disabledCards.length === cardsNum * 2) {
     setTimeout(() => {
@@ -93,30 +82,28 @@ const checkEndGame = () => {
 
       saveBestTimeToLocalStorage();
 
-      alert(
-        `Parabéns, ${playerDisplay.textContent}! Seu tempo foi: ${timerDisplay.textContent}`
-      );
+      alert(`Parabéns, ${playerDisplay.textContent}! Seu tempo foi: ${timerDisplay.textContent}`);
     }, 600);
   }
 };
 
 const checkCards = () => {
-  const firstChoice = firstCard.getAttribute("data-image");
-  const secondChoice = secondCard.getAttribute("data-image");
+  const firstChoice = firstCard.getAttribute('data-image');
+  const secondChoice = secondCard.getAttribute('data-image');
 
   if (firstChoice === secondChoice) {
-    firstCard.firstChild.classList.add("disabled-card");
-    secondCard.firstChild.classList.add("disabled-card");
-    firstCard = "";
-    secondCard = "";
+    firstCard.firstChild.classList.add('disabled-card');
+    secondCard.firstChild.classList.add('disabled-card');
+    firstCard = '';
+    secondCard = '';
 
     checkEndGame();
   } else {
     setTimeout(() => {
-      firstCard.classList.remove("reveal-card");
-      secondCard.classList.remove("reveal-card");
-      firstCard = "";
-      secondCard = "";
+      firstCard.classList.remove('reveal-card');
+      secondCard.classList.remove('reveal-card');
+      firstCard = '';
+      secondCard = '';
     }, 1500);
   }
 };
@@ -125,33 +112,33 @@ const revealCard = ({ target }) => {
   const card = target.dataset.image;
   if (!card) return;
 
-  if (target.className.includes("reveal-card")) return;
+  if (target.className.includes('reveal-card')) return;
 
-  if (firstCard === "") {
-    target.classList.add("reveal-card");
+  if (firstCard === '') {
+    target.classList.add('reveal-card');
     firstCard = target;
-  } else if (secondCard === "") {
-    target.classList.add("reveal-card");
+  } else if (secondCard === '') {
+    target.classList.add('reveal-card');
     secondCard = target;
     checkCards();
   }
 };
 
 const createBackCardAstronaut = () => {
-  const container = createElement("div", "container");
-  const stars = createElement("div", "stars");
-  const planet = createElement("div", "planet");
-  const astronaut = createElement("div", "astronaut");
-  const shadow = createElement("div", "shadow");
-  const tank = createElement("div", "tank center");
-  const suit = createElement("div", "suit center");
-  const helmet = createElement("div", "helmet center");
-  const buttons = createElement("div", "buttons center");
-  const handL = createElement("div", "hand-l");
-  const handR = createElement("div", "hand-r");
-  const legL = createElement("div", "leg-l");
-  const legR = createElement("div", "leg-r");
-  const pipe = createElement("div", "pipe");
+  const container = createElement('div', 'container');
+  const stars = createElement('div', 'stars');
+  const planet = createElement('div', 'planet');
+  const astronaut = createElement('div', 'astronaut');
+  const shadow = createElement('div', 'shadow');
+  const tank = createElement('div', 'tank center');
+  const suit = createElement('div', 'suit center');
+  const helmet = createElement('div', 'helmet center');
+  const buttons = createElement('div', 'buttons center');
+  const handL = createElement('div', 'hand-l');
+  const handR = createElement('div', 'hand-r');
+  const legL = createElement('div', 'leg-l');
+  const legR = createElement('div', 'leg-r');
+  const pipe = createElement('div', 'pipe');
 
   planet.appendChild(shadow);
   astronaut.append(tank, suit);
@@ -162,9 +149,9 @@ const createBackCardAstronaut = () => {
 };
 
 const createCard = (img) => {
-  const card = createElement("div", "game__card");
-  const front = createElement("div", "game__card__face front");
-  const back = createElement("div", "game__card__face back");
+  const card = createElement("div", "game-card");
+  const front = createElement("div", "game-card__face front");
+  const back = createElement("div", "game-card__face back");
 
   front.style.backgroundImage = `url("../assets/${img}.jpg")`;
 
@@ -173,8 +160,7 @@ const createCard = (img) => {
   back.appendChild(astronaut);
   card.appendChild(front);
   card.appendChild(back);
-
-  card.setAttribute("data-image", img);
+  card.setAttribute('data-image', img);
 
   return card;
 };
@@ -200,12 +186,12 @@ const startTimer = () => {
 };
 
 const returnPage = () => {
-  const answer = window.confirm("Deseja abandonar a partida?");
-  if (answer) window.location = "../index.html";
+  const answer = window.confirm('Deseja abandonar a partida?');
+  if (answer) window.location = '../index.html';
 };
 
 const restartGame = () => {
-  const answer = window.confirm("Deseja reiniciar a partida?");
+  const answer = window.confirm('Deseja reiniciar a partida?');
   if (answer)
     setTimeout(() => {
       window.location.reload(true);
@@ -213,20 +199,20 @@ const restartGame = () => {
 };
 
 const pauseGame = (button) => {
-  cardsContainer.style.pointerEvents = "none";
-  cardsContainer.style.filter = "opacity(.5) grayScale(1)";
+  cardsContainer.style.pointerEvents = 'none';
+  cardsContainer.style.filter = 'opacity(.5) grayScale(1)';
   clearInterval(this.loop);
 
   button.innerHTML = '<i class="fa-solid fa-play" data-icon="play"></i>';
-  button.dataset.button = "play";
+  button.dataset.button = 'play';
 };
 
 const playGame = (button) => {
-  cardsContainer.style.pointerEvents = "";
-  cardsContainer.style.filter = "";
+  cardsContainer.style.pointerEvents = '';
+  cardsContainer.style.filter = '';
 
   button.innerHTML = '<i class="fa-solid fa-pause" data-icon="pause"></i>';
-  button.dataset.button = "pause";
+  button.dataset.button = 'pause';
   startTimer();
 };
 
@@ -234,17 +220,17 @@ const handleHeaderButtons = ({ target }) => {
   const button = target.dataset.button;
 
   if (!button) return null;
-  if (button === "return") return returnPage();
-  if (button === "restart") return restartGame();
-  if (button === "pause") return pauseGame(target);
-  if (button === "play") return playGame(target);
+  if (button === 'return') return returnPage();
+  if (button === 'restart') return restartGame();
+  if (button === 'pause') return pauseGame(target);
+  if (button === 'play') return playGame(target);
 };
 
-cardsContainer.addEventListener("click", revealCard);
-buttons.addEventListener("click", handleHeaderButtons);
+cardsContainer.addEventListener('click', revealCard);
+buttons.addEventListener('click', handleHeaderButtons);
 
 window.onload = () => {
-  playerDisplay.textContent = localStorage.getItem("player");
+  playerDisplay.textContent = localStorage.getItem('player');
 
   displayBestTime();
   startTimer();
