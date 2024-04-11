@@ -9,12 +9,12 @@ An intuitive game in vanilla JavaScript and SASS with three difficulty levels, w
 ## Live Demo
 
 [Português]
-Confira a demonstração ao vivo em breve
+Confira a demonstração ao vivo:
 
 [English]
-Check out the live soon
+Check out the live demo:
 
-[Live Preview]()
+[Live Preview](https://jogo-da-memoria-jessicasantosb.vercel.app/)
 
 ## Screenshot
 
