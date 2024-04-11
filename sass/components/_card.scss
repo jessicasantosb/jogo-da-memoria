@@ -17,7 +17,7 @@
     background-position: center;
     border: 2px solid $secondary;
     border-radius: 5px;
-    transition: all 1s ease;
+    transition: all 100ms ease;
     pointer-events: none;
 
     @media screen and (max-width: 700px) {
@@ -36,6 +36,12 @@
   & .back {
     background: $gradient;
     backface-visibility: hidden;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover &__face {
+    border-color: $primary;
   }
 }
 

@@ -325,7 +325,7 @@
   background-position: center;
   border: 2px solid #fda403;
   border-radius: 5px;
-  transition: all 1s ease;
+  transition: all 100ms ease;
   pointer-events: none;
 }
 @media screen and (max-width: 700px) {
@@ -344,6 +344,12 @@
 .game-card .back {
   background: linear-gradient(62deg, rgb(4, 100, 132) 0%, rgb(15, 85, 112) 29%, rgb(20, 58, 74) 58%, rgb(19, 44, 56) 100%);
   backface-visibility: hidden;
+}
+.game-card:hover {
+  cursor: pointer;
+}
+.game-card:hover .game-card__face {
+  border-color: #046484;
 }
 
 .reveal-card {
